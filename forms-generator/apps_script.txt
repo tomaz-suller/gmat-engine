@@ -1,0 +1,69 @@
+function Criar_Forms()
+{
+
+var form = FormApp.openByUrl('Tomaz');
+form.addPageBreakItem().setTitle('GMAT')
+
+var item = form.addMultipleChoiceItem();
+item.setTitle('Qual seu nome?');
+item.setChoices([
+item.createChoice('Ricardo')
+]);
+
+form.addPageBreakItem().setTitle('Questoes')
+
+var item = form.addMultipleChoiceItem();
+item.setTitle('Pergunta 0');
+item.setPoints(1);
+item.setChoices([
+item.createChoice('A'),
+item.createChoice('B'),
+item.createChoice('C'),
+item.createChoice('D'),
+item.createChoice('E')
+]);
+
+var item = form.addMultipleChoiceItem();
+item.setTitle('Pergunta 1');
+item.setPoints(1);
+item.setChoices([
+item.createChoice('A'),
+item.createChoice('B'),
+item.createChoice('C'),
+item.createChoice('D'),
+item.createChoice('E')
+]);
+
+var item = form.addMultipleChoiceItem();
+item.setTitle('Pergunta 2');
+item.setPoints(1);
+item.setChoices([
+item.createChoice('A'),
+item.createChoice('B'),
+item.createChoice('C'),
+item.createChoice('D'),
+item.createChoice('E')
+]);
+
+var item = form.addMultipleChoiceItem();
+item.setTitle('Pergunta 3');
+item.setPoints(1);
+item.setChoices([
+item.createChoice('A'),
+item.createChoice('B'),
+item.createChoice('C'),
+item.createChoice('D'),
+item.createChoice('E')
+]);
+
+var item = form.addMultipleChoiceItem();
+item.setTitle('Pergunta 4');
+item.setPoints(1);
+item.setChoices([
+item.createChoice('A'),
+item.createChoice('B'),
+item.createChoice('C'),
+item.createChoice('D'),
+item.createChoice('E')
+]);
+}
