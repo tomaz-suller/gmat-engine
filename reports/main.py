@@ -107,8 +107,8 @@ def relatorio(mes):
     path = os.path.join(CWD, "relatorios", MESES[mes])
     cria_pasta(path)
     rel.to_csv( os.path.join(path, MESES[mes]+'.csv') )
-
-    realizacao = []
+    
+    realizacao = pd.DataFrame(index=['nomes'], columns=['#gmats'])
 
     for membro in membros:
 
@@ -124,12 +124,11 @@ def relatorio(mes):
         gmat_min = GMATS[0]
         gmat_max = GMATS[-1]
         
-        realizacao = pd.DataFrame(index=['nomes'], columns=['#gmats'])
         realizacao[membro] = membro_df.shape[0]
 
         plot(membro, membro_df, gmat_min, gmat_max, mes)
     
-    realizacao.to_csv( os.path.join(path, 'realizacao.csv') )
+    realizacao.T.to_csv( os.path.join(path, 'realizacao.csv') )
 
 
 def porcentagem(x):
