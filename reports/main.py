@@ -278,7 +278,6 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
 
 
 def le_gmats():
-    n = int(input("Digite a quantidade de GMATs\n> "))
     sequencial = int(input("Os GMATs sao sequenciais? (0/1)\n> "))
     if sequencial:
         primeiro = int(input("Digite o numero do primeiro GMAT\n> "))
@@ -286,6 +285,7 @@ def le_gmats():
         for i in range(primeiro, ultimo+1):
             GMATS.append(i)
     else:
+        n = int(input("Digite a quantidade de GMATs\n> "))
         for i in range(n):
             gmat = int(input("Digite o numero do GMAT\n> "))
             GMATS.append(gmat)
