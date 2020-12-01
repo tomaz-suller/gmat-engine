@@ -137,9 +137,7 @@ def porcentagem(x):
 
 def plot(membro, membro_df, gmat_min, gmat_max, mes):
 
-    delta_medio = np.average(membro_df['deltas'])
-
-    tags = ["Acertos", "Media do clube", "Delta com media do clube", "Crescimento",  "Delta medio do mes"]
+    tags = ["Acertos", "Media do clube", "Delta com media do clube", "Crescimento"]
     head = ['']
     values = [tags]
     width = [300]
@@ -151,12 +149,12 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
         width.append(100)            
         try:
             pc = membro_df.loc[i].apply(porcentagem)
-            values.append( pc.tolist() + [ porcentagem(delta_medio) ] )
+            values.append( pc.tolist() )
             acertos.append( membro_df.loc[i].acertos.tolist() )
             deltas.append( membro_df.loc[i].deltas.tolist() )
             media.append( membro_df.loc[i].media.tolist() )
         except KeyError:
-            values.append( np.zeros(5) )
+            values.append( np.zeros(4) )
             acertos.append(0)
             deltas.append(0)
             media.append(0)
