@@ -180,6 +180,9 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
         )],
         layout=go.Layout(
             title=go.layout.Title(text=membro.upper()),
+            font=dict(
+                family="Eurostile"
+            )
         )
     )
 
@@ -191,12 +194,16 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
 
     fig2 = go.Figure(
         layout=go.Layout(
-            title=go.layout.Title(text='Acertos comparados a media do clube')
+            title=go.layout.Title(text='Acertos (vermelho) comparados a media do clube (azul)'),
+            font=dict(
+                family="Eurostile"
+            )
         )
     )
 
     fig2.add_trace(
         go.Scatter(
+            x=[i for i in range(gmat_min, gmat_max+1)],
             y=acertos,
             line=dict(
                 color='rgb(192,0,52)',
@@ -208,24 +215,38 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
     )
 
     fig2.add_trace(go.Bar(
+            x=[i for i in range(gmat_min, gmat_max+1)],
             y=media,
             marker_color='rgb(5,24,42)',
             hovertext=[ porcentagem(i) for i in media ]
         )
     )
 
-    fig2.update_xaxes(visible=False)
-    fig2.update_layout(showlegend=False)
+    fig2.update_xaxes(
+        type='category',
+        title_text="GMAT",
+        title_font=dict(
+            family="Eurostile"
+        )
+    )
+    fig2.update_layout(
+        showlegend=False,
+        yaxis_tickformat='%'
+    )
 
 
     fig3 = go.Figure(
         layout=go.Layout(
-            title=go.layout.Title(text='Variacao do delta')
+            title=go.layout.Title(text='Variacao do delta'),
+            font=dict(
+                family="Eurostile"
+            )
         )
     )
 
     fig3.add_trace(
         go.Scatter(
+            x=[i for i in range(gmat_min, gmat_max+1)],
             y=deltas,
             line=dict(
                 color='rgb(5,24,42)',
@@ -236,7 +257,13 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
         )
     )
 
-    fig3.update_xaxes(visible=False)
+    fig3.update_xaxes(
+        type='category',
+        title_text="GMAT",
+        title_font=dict(
+            family="Eurostile"
+        )
+    )
     fig3.update_layout(
         showlegend=False,
         yaxis_tickformat='%'    
