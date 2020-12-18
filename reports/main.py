@@ -25,11 +25,33 @@ OPCOES
 1) Calcula dados para GMATs e exporta CSVs
 2) Gera relatorio mensal
 3) Imprime instrucoes de uso
-4) Ativa modo verborragico (para debug)
+4) Ativa modo verborragico (so para debug)
 9) Sai do programa
 
 Digite sua opcao
 > """
+
+instrucoes = """
+
+O uso do script e dividido em 4 partes:
+    1. Coletar as planilhas de desempenho do Google Forms e baixá-las no seu computador
+        - As planilhas devem ser colocadas na mesma pasta que este script
+    2. Pre-processar manualemente as planilhas
+        - Os nomes dos membros devem estar escritos na coluna "nomes" (tudo minusculo)
+        - Deve ser calculada a porcentagem de acertos para cada membro, que deve ser escrita
+             - em decimal com ponto ('.') como separador - na coluna "acertos" (tudo minusculo)
+        - A planilha deve ser salva no formato CSV
+        - O nome do arquivo resultante deve ser da forma "[numero do GMAT].csv" 
+            (ex.: "6.csv" para o GMAT 6)
+    3. Calcular dados para GMATs por meio da opcao 1)
+    4. Gerar o relatorio mensal deejado por meio da opcao 2)
+
+A opcao 1) gera uma pasta "gmats", que contem as informacoes completas dos GMATs 
+    (nomes, acertos, numero do GMAT, deltas e crescimento)
+A opcao 2) gera uma pasta "relatorios", que contem pastas com a sigla do mes do relatorio;
+    a pasta mensal contem pastas com o nome de cada membro, dentro das quais estao os 3 arquivos 
+    que devem ser enviados a cada um no final do mes 
+"""
     
 import plotly.graph_objects as go
 import pandas as pd
@@ -318,7 +340,7 @@ def main():
             relatorio(mes-1)
 
         elif opt == 3:
-            break
+            print(instrucoes)
 
         elif opt == 4:
             verborragico = True
