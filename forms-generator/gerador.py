@@ -87,7 +87,7 @@ file.write(r".setTitle('Questoes')")
 file.write("\n")
 
 for i in range(numero_de_questoes):
-    cria_mult_escolha(file, 'Pergunta {}'.format(i), ['A', 'B', 'C', 'D', 'E'], gabarito_da_questoes)
+    cria_mult_escolha(file, 'Pergunta {}'.format(i), ['A', 'B', 'C', 'D', 'E'], gabarito_da_questoes[i])
 
 file.write("}")
 
