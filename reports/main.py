@@ -88,9 +88,9 @@ def avalia():
             media = np.average(atual.acertos)
             atual['deltas'] =  (atual.acertos - media) / media
             csv = str(gmat-1)+".csv"
-            path = os.getcwd()
-            if os.path.isfile( os.path.join(path, csv) ):
-                anterior = pd.read_csv(str(gmat-1)+'.csv')
+            anterior_path = os.path.join(CWD, 'gmat', csv)
+            if os.path.isfile(anterior_path):
+                anterior = pd.read_csv(anterior_path)
                 anterior.set_index('nomes', inplace=True)
                 atual['crescimento'] = (atual.deltas - anterior.deltas)/ np.abs(anterior.deltas)
             else:
@@ -99,8 +99,9 @@ def avalia():
             path = os.path.join(CWD, "gmat")
             cria_pasta(path)
             atual.to_csv( os.path.join(path, str(gmat)+'.csv') )
-        except:
+        except Exception as e:
             print("[ERRO] GMAT {0} não pode ser processado".format(gmat))
+            print(e)
 
 
 def relatorio(mes):
@@ -167,7 +168,7 @@ def plot(membro, membro_df, gmat_min, gmat_max, mes):
     media = []
     for i in range(gmat_min, gmat_max+1):
         head.append('<b>GMAT {0}</b>'.format(i))
-        width.append(100)            
+        width.append(150)            
         try:
             pc = membro_df.loc[i].apply(porcentagem)
             values.append( pc.tolist() )
